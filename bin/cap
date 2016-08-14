@@ -11,5 +11,5 @@ then
   ssh-add $SSH_KEY
 fi
 
-cd $SOURCE_DIR && bundle install
+cd $SOURCE_DIR && bundle install --path vendor/bundle
 cd $SOURCE_DIR && bundle exec cap $@
