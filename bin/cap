@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+set -e
+
+SOURCE_DIR=/root/source
+SSH_KEY=/root/.ssh/id_rsa
+
+if [ -f "$SSH_KEY" ]
+then
+  eval `ssh-agent -s`
+  ssh-add $SSH_KEY
+fi
+
+cd $SOURCE_DIR && bundle install
+cd $SOURCE_DIR && bundle exec cap $@
