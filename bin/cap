@@ -1,15 +1,15 @@
 #!/usr/bin/env sh
 
-set -e
+set -ex
 
-SOURCE_DIR=/root/source
-SSH_KEY=/root/.ssh/id_rsa
+source_dir=/root/source
+rsa=/root/.ssh/id_rsa
 
-if [ -f "$SSH_KEY" ]
+if [ -f "$rsa" ]
 then
   eval `ssh-agent -s`
-  ssh-add $SSH_KEY
+  ssh-add $rsa
 fi
 
-cd $SOURCE_DIR && bundle install --path vendor/bundle
-cd $SOURCE_DIR && bundle exec cap $@
+cd $source_dir && bundle install --path vendor/bundle
+cd $source_dir && bundle exec cap $@
